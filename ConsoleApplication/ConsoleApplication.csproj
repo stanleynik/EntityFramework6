@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{787EE3EE-F431-4CDD-8F0C-73402661089B}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{1A16B627-6172-4D38-B8AF-8341C851D458}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NinjaDomain.DataModel</RootNamespace>
-    <AssemblyName>NinjaDomain.DataModel</AssemblyName>
+    <RootNamespace>ConsoleApplication</RootNamespace>
+    <AssemblyName>ConsoleApplication</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,34 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201606022025086_Initial.cs" />
-    <Compile Include="Migrations\201606022025086_Initial.Designer.cs">
-      <DependentUpon>201606022025086_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606022125040_NinjaDOB.cs" />
-    <Compile Include="Migrations\201606022125040_NinjaDOB.Designer.cs">
-      <DependentUpon>201606022125040_NinjaDOB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="NinjaContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataModel\NinjaDomain.DataModel.csproj">
+      <Project>{787ee3ee-f431-4cdd-8f0c-73402661089b}</Project>
+      <Name>NinjaDomain.DataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NinjaDomain.Classes\NinjaDomain.Classes.csproj">
       <Project>{b712336d-5c72-49a4-aa35-adc0d83ef14a}</Project>
       <Name>NinjaDomain.Classes</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606022025086_Initial.resx">
-      <DependentUpon>201606022025086_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606022125040_NinjaDOB.resx">
-      <DependentUpon>201606022125040_NinjaDOB.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
