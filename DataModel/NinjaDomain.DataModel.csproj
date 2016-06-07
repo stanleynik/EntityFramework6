@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectedRepository.cs" />
+    <Compile Include="DisconnectedRepository.cs" />
     <Compile Include="Migrations\201606022025086_Initial.cs" />
     <Compile Include="Migrations\201606022025086_Initial.Designer.cs">
       <DependentUpon>201606022025086_Initial.cs</DependentUpon>
@@ -54,11 +56,20 @@
     <Compile Include="Migrations\201606022125040_NinjaDOB.Designer.cs">
       <DependentUpon>201606022125040_NinjaDOB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606062136063_ModificationHistory.cs" />
+    <Compile Include="Migrations\201606062136063_ModificationHistory.Designer.cs">
+      <DependentUpon>201606062136063_ModificationHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606062139074_RemoveIsDirty.cs" />
+    <Compile Include="Migrations\201606062139074_RemoveIsDirty.Designer.cs">
+      <DependentUpon>201606062139074_RemoveIsDirty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NinjaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606022125040_NinjaDOB.resx">
       <DependentUpon>201606022125040_NinjaDOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606062136063_ModificationHistory.resx">
+      <DependentUpon>201606062136063_ModificationHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606062139074_RemoveIsDirty.resx">
+      <DependentUpon>201606062139074_RemoveIsDirty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,6 +23,8 @@ namespace ConsoleApplication
             //RetrieveDataWithStoredProcedure();
             //DeleteNinja();
             //DeleteNinjaViaStoredProcedure();
+            //InsertNinjaWithEquipment();
+            SimpleNinjaGraphQuery();
             Console.ReadKey();
         }
 
@@ -175,5 +177,62 @@ namespace ConsoleApplication
                 context.Database.ExecuteSqlCommand("exec DeleteNinjaViaId {0}", keyval);
             }
         }
+        private static void InsertNinjaWithEquipment()
+        {
+            using (var context = new NinjaContext())
+            {
+                context.Database.Log = Console.WriteLine;
+                var ninja = new Ninja
+                {
+                    Name = "Kacy Catanzaro",
+                    ServedInOniwaban = false,
+                    DateOfBirth = new DateTime(1990,1,14),
+                    ClanId = 1
+                };
+                var muscles = new NinjaEquipment
+                {
+                    Name = "Muscles",
+                    Type = EquipmentType.Tool,
+                };
+                var spunk = new NinjaEquipment { 
+                    Name = "Spunk",
+                    Type = EquipmentType.Weapon,
+                };
+                context.Ninjas.Add(ninja);
+                ninja.EquipmenaddtOwned.Add(muscles);
+                ninja.EquipmenaddtOwned.Add(spunk);
+                context.SaveChanges();
+            }
+        }
+
+        private static void SimpleNinjaGraphQuery()
+        {
+            using (var context = new NinjaContext())
+            {
+                context.Database.Log = Console.WriteLine;
+                //Use include to eager loading
+                //var ninja = context.Ninjas.Include(n => n.EquipmenaddtOwned)
+                //              .FirstOrDefault(n => n.Name.StartsWith("Kacy"));
+               
+                //This way for explicit loading
+                var ninja = context.Ninjas.FirstOrDefault(n => n.Name.StartsWith("Kacy"));
+                Console.WriteLine("Ninja Retrieved:" + ninja.Name);
+                //context.Entry(ninja).Collection(n => n.EquipmenaddtOwned).Load();
+                //Lazy Load Set Navegation Property as Virtal (EquipmentaddtOwned)
+                Console.WriteLine("Ninja Equipment Count: {0}", ninja.EquipmenaddtOwned.Count());
+            }
+        }
+
+        private static void ProjectionQuery()
+        {
+            using (var context = new NinjaContext())
+            {
+                context.Database.Log = Console.WriteLine;
+                var ninjas = context.Ninjas
+                    .Select(n => new { n.Name, n.DateOfBirth, n.EquipmenaddtOwned })
+                    .ToList();
+            }
+        }
+
     }
 }
